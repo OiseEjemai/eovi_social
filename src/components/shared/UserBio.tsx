@@ -41,7 +41,7 @@ const OnboardingUser = () => {
     })
     useEffect(() => {
         if (typeof window !== 'undefined') {
-            const tgData = window.Telegram?.WebApp?.initDataUnsafe?.user;
+            const tgData = window.Telegram.WebApp.initDataUnsafe?.user;
             if (tgData) {
                 setTgUser({
                     id: tgData.id,
