@@ -4,9 +4,9 @@ import { Button } from '../ui'
 
 const Onboarding = () => {
   const navigate = useNavigate()
-  const continueToHome = () => {
-    navigate('/onboarding-user')
-  }
+  const handleContinue = () => {
+    navigate('/onboarding-user');
+  };
   return (
     <div className='flex flex-1'>
       <div className='flex flex-col justify-between flex-1'>
@@ -14,7 +14,7 @@ const Onboarding = () => {
 
         <div className='bottom-0 flex items-center justify-center flex-col gap-9 py-5 px-4'>
           <h1>By continuing, you agree to our <Link to="/terms-and-conditions" className='underline hover:text-blue-700 transition'>Terms and conditions</Link>.</h1>
-          <Button className='shad-button_primary md:w-[9rem] w-full cursor-pointer' onClick={() => continueToHome()}>Continue</Button>
+          <Button className='shad-button_primary md:w-[9rem] w-full cursor-pointer' onClick={() => handleContinue()}>Continue</Button>
         </div>
       </div>
     </div>

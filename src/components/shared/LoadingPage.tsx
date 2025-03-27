@@ -1,11 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 const LoadingPage = () => {
     const navigate = useNavigate()
-    setTimeout(() => {
-        navigate("/onboarding")
-    }, 5000);
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            navigate("/onboarding");
+        }, 5000);
+
+        // Cleanup the timer if component unmounts
+        return () => clearTimeout(timer);
+    }, [navigate]);
     return (
         <div className='flex flex-1 items-center justify-between flex-col'>
             <h1 className='text-[40px] font-bold leading-[140%] tracking-tighter md:h2-bold font-mono text-center w-full items-center justify-center'>Eovi</h1>

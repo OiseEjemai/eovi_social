@@ -27,6 +27,7 @@ interface TelegramUser {
     username: string;
     photo_url: string;
     is_premium: boolean;
+    isOnboarded: boolean;
 }
 
 const OnboardingUser = () => {
@@ -46,15 +47,17 @@ const OnboardingUser = () => {
                 setTgUser({
                     id: tgData.id,
                     name: tgData.first_name,
-                    username: tgData.username,
-                    photo_url: tgData.photo_url,
-                    is_premium: tgData.is_premium,
+                    username: tgData.username || '', // Handle missing username
+                    photo_url: tgData.photo_url || '', // Handle missing photo
+                    is_premium: tgData.is_premium || false,
+                    isOnboarded: false,
                 });
             }
         }
     }, []);
 
     const handleSubmit = async (value: z.infer<typeof BioValidation>) => {
+        console.log(value, "submitted")
         if (!tgUser) return;
         setIsLoading(true)
 

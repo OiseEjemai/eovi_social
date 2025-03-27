@@ -7,6 +7,7 @@ interface IUSER {
     username?: string;
     photo_url?: string;
     is_premium?: boolean;
+    isOnboarded: boolean;
 }
 
 export const createUser = async (tgUser: IUSER, bio: string) =>  {
@@ -21,6 +22,11 @@ export const createUser = async (tgUser: IUSER, bio: string) =>  {
             photo_url: tgUser.photo_url || "",
             TelegramID: tgUser.id.toString(),
             isPremium: tgUser.is_premium || false,
+            isOnboarded: true,
+            followers: [],
+            following: [],
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString(),
             posts: []
         }
     )
