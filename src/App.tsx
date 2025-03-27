@@ -11,24 +11,29 @@ import UserBio from './components/shared/UserBio'
 const App = () => {
     const [isChecking, setIsChecking] = useState(true);
     const navigate = useNavigate();
-  
+
     useEffect(() => {
-      const hasVisited = localStorage.getItem('hasVisited');
-      
-      if (!hasVisited) {
-        // First-time user
-        localStorage.setItem('hasVisited', 'true');
-        navigate('/loading', { replace: true });
-      } else {
-        // Returning user
-        navigate('/', { replace: true });
-      }
-      
-      setIsChecking(false);
+        const isTelegram = !!window.Telegram?.WebApp?.initDataUnsafe;
+        const hasVisited = localStorage.getItem('hasVisited');
+
+        if (isTelegram) {
+            // Telegram users logic
+            if (!hasVisited) {
+                navigate('/loading', { replace: true });
+            } else {
+                navigate('/', { replace: true });
+            }
+        } else {
+            // Non-Telegram users always go to home
+            if (!hasVisited) localStorage.setItem('hasVisited', 'true');
+            navigate('/', { replace: true });
+        }
+
+        setIsChecking(false);
     }, [navigate]);
-  
+
     if (isChecking) {
-      return <div className="loading-screen">Checking session...</div>;
+        return <div>Checking environment...</div>;
     }
     return (
         <div className='flex h-screen'>
