@@ -21,15 +21,24 @@ const App = () => {
         const checkOnboardingStatus = async () => {
             try {
                 const tgUser = window.Telegram?.WebApp?.initDataUnsafe?.user
-                // if (!tgUser) {
-                //     navigate('/not-tg')
-                //     return
-                // }
-                // if (!tgUser?.id) {
-                //     console.error('Telegram user data not available');
-                //     navigate('/error');
-                //     return;
-                // }
+                if (!tgUser) {
+                    navigate('/not-tg')
+                    return
+                }
+                if (!tgUser?.id) {
+                    console.error('Telegram user data not available');
+                    navigate('/error');
+                    return;
+                }
+
+                useEffect(() => {
+                    if (window.Telegram?.WebApp) {
+                      window.Telegram.WebApp.expand(); // Expands the app
+                      console.log("Telegram WebApp initialized", window.Telegram.WebApp);
+                    } else {
+                      console.error("Telegram WebApp not found!");
+                    }
+                  }, []);
 
                 // Check if user exists in Appwrite
                 const existingUser = await databases.listDocuments(
