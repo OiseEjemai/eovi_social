@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="https://i.imgur.com/gbAh7WR.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eovi</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <script 
+    async 
+    src="https://tganalytics.xyz/index.js" 
+    onload="initAnalytics()" 
+    type="text/javascript"
+></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main"></script>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+      function initAnalytics() {
+        window.telegramAnalytics.init({
+          token: 'eyJhcHBfbmFtZSI6ImVvdmkiLCJhcHBfdXJsIjoiaHR0cHM6Ly90Lm1lL2VvdmlfYm90IiwiYXBwX2RvbWFpbiI6Imh0dHBzOi8vZW92aS1zb2NpYWwudmVyY2VsLmFwcCJ9!q0303xZPwhGBvw4+k0wLaIoaU3Exio97H5JnIBifU+U=',
+          appName: 'eovi',
+        });
+      }
+  </script>
+  </body>
+</html>
